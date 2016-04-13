@@ -1,0 +1,103 @@
+@charset "utf-8";
+
+@import "zless/z";
+@import "zless/new";
+@import "zless/reset";
+@import "zless/css3";
+
+.reset;
+
+body {
+  .font-baidu;
+}
+
+input, textarea, select {
+  .font-baidu();
+}
+
+//customer
+.redColor {
+  background: lightcoral;
+  color: white;
+  font-size: 18px;
+}
+
+/*.generate-columns(@n, @i: 1) when (@i =< @n) {
+  　　.column-@{i} {
+    　　　　width: (@i * 100% / @n);
+      }
+  .generate-columns(@n, (@i + 1));
+}
+
+.generate-columns(4);*/
+
+/*
+生成n个wn的样式
+如.w10{width:10px}
+*/
+.generate-w(@n, @i: 1) when (@i =< @n) {
+  @wi: @i*10;
+  　　.w@{wi} {
+    width: @wi + 0px;
+  }
+  .generate-w(@n, (@i + 1));
+}
+
+.generate-w(30);
+
+//@H500: #F44336;
+//@H50: hsv(hsvhue(@H500),hsvsaturation(@H500)-80%,hsvvalue(@H500)+50%);
+//@H100: hsv(hsvhue(@H500),hsvsaturation(@H500)-50%,hsvvalue(@H500)+40%);
+//@H200: hsv(hsvhue(@H500),hsvsaturation(@H500)-30%,hsvvalue(@H500)+30%);
+//@H300: hsv(hsvhue(@H500),hsvsaturation(@H500)-20%,hsvvalue(@H500)+20%);
+//@H400: hsv(hsvhue(@H500),hsvsaturation(@H500)-10%,hsvvalue(@H500)+10%);
+//@H600: hsv(hsvhue(@H500),hsvsaturation(@H500)+10%,hsvvalue(@H500)-10%);
+//@H700: hsv(hsvhue(@H500),hsvsaturation(@H500)+20%,hsvvalue(@H500)-20%);
+//@H800: hsv(hsvhue(@H500),hsvsaturation(@H500)+30%,hsvvalue(@H500)-30%);
+//@H900: hsv(hsvhue(@H500),hsvsaturation(@H500)+50%,hsvvalue(@H500)-40%);
+
+@H500: #beffff;
+@H50:lighten(@H500, 90%);
+@H100:lighten(@H500, 70%);
+@H200:lighten(@H500, 50%);
+@H300:lighten(@H500, 33%);
+@H400:lighten(@H500, 16%);
+@H600:darken(@H500, 12%);
+@H700:darken(@H500, 37%);
+@H800:darken(@H500, 50%);
+@H900:darken(@H500, 70%);
+
+
+.H500 {
+  @hsv: hsv(hsvhue(@H500), hsvsaturation(@H500), hsvvalue(@H500));
+  @r: red(@hsv);
+  @g: green(@hsv);
+  @b: blue(@hsv);
+  color: rgb(@r,@g,@b);
+}
+
+.H600(@color) {
+  @hsv: hsv(hsvhue(@color),hsvsaturation(@color)+10%,hsvvalue(@color)-10%);
+  @r: red(@hsv);
+  @g: green(@hsv);
+  @b: blue(@hsv);
+  color: rgb(@r,@g,@b);
+}
+
+.H600 {
+  .H600(@H500);
+}
+
+.color {
+  color50: @H50;
+  color100: @H100;
+  color200: @H200;
+  color300: @H300;
+  color400: @H400;
+  color500: @H500;
+  color600: @H600;
+  color700: @H700;
+  color800: @H800;
+  color900: @H900;
+}
+

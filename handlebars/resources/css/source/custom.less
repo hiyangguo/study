@@ -1,0 +1,91 @@
+
+.input-icon {
+	&.input-search {
+		width: 150px;
+		input {
+			height: 40px;
+			font-size: 16px;
+		}
+		i {
+			margin: 12px 2px 4px 12px
+		}
+	}
+	i {
+		color: @B500;
+		margin: 10px 2px 4px 12px
+	}
+	input {
+		padding-left: 36px !important
+	}
+}
+
+.daterangepicker-custom{
+    border: 1px solid @B300;
+    &:hover{
+            border-color: @B500;
+    }
+    input {
+        border-right: none;
+        cursor: pointer;
+
+    }
+    input, button {
+        border: none;
+        background: #fff;
+
+    }
+    .input-group-btn{
+    	.btn{
+    		&:hover,&:active,&:focus{
+	            background-color: #fff !important;
+	        }
+    	}
+    }
+    &.disabled {
+        background: @B050;
+        input, button {
+            border-color: @B200;
+            color: @B600;
+            background: none !important;
+        }
+    }
+}
+
+
+#btn_date_type{ position: relative; display: none;}
+#data_panel .whisper{
+	left: 90px;
+    position: absolute;
+    top: 240px;
+}
+#panel_color_wrap{ margin-left: -@gap;
+	.panel_color{
+		padding: 0;
+		margin:@gap;
+		list-style: none;
+		width: 300px;
+		float:left;
+		li{
+			padding: 10px;
+			font-family: 'DejaVu Sans Mono';
+		}
+	}
+}
+
+.color-title{
+    background: #f1f1f1;
+    color: #5f5f5f;
+    float: left;
+    height: 26px;
+    padding: 4px;
+    width: 64px;
+}
+.color-dot{
+    width: 26px;
+    height: 26px;
+    float: left;
+}
+.base_color{
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}

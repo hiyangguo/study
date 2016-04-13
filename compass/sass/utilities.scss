@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@import "compass/utilities";
+
+//brightness 输出亮度值 L
+@debug brightness(#000);
+
+//表格外边框
+.goods-price {
+    $table-color: #7a98c6;
+    @include outer-table-borders; //外边框
+    @include inner-table-borders(1px, darken($table-color, 40%)); //内边框
+
+    @include table-scaffolding(); //表格边距
+
+    @include alternating-rows-and-columns($table-color, adjust_hue($table-color, -120deg), #222222, #fff, #fff);
+}
+
+.clearfix {
+    @include legacy-pie-clearfix;
+}
+
+//支持ie6
+$browser-minimum-versions: ("ie": "6");
+//输出某一浏览器的使用率
+@debug omitted-usage("ie", "6");
+.pull-left {
+    @include float-left;
+}
+
+//兼容ie6
+.need-has-layout{
+    @include has-layout;
+}
+
+.underscore-hack-display{
+    @include underscore-hack("display","block","inline")
+}
+
+.min-height{
+    @include min-height(10px);
+}
+
+.tag-cloud-container{
+    @include tag-cloud(24px);
+}

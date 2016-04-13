@@ -1,0 +1,128 @@
+{
+  "page": {
+    "index": {
+      "title": "测试模版引擎 - index",
+      "name": "警告框 Alert"
+    }
+  },
+  "menu": [
+    {
+      "name": "theme",
+      "title": "主题",
+      "icon": "fa fa-picture-o",
+      "items": [
+        {
+          "name": "color",
+          "title": "配色 Color",
+          "url": "theme-color.html",
+          "active": 0
+        },
+        {
+          "name": "buttons",
+          "title": "按钮 Button",
+          "url": "#",
+          "active": 0
+        }
+      ]
+    },
+    {
+      "name": "com",
+      "title": "组件",
+      "icon": "fa fa-briefcase",
+      "items": [
+        {
+          "name": "form",
+          "title": "表单 Form",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "dialogs",
+          "title": "对话框 Dialog",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "alerts",
+          "title": "警告框 Alert",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "Tooltip",
+          "title": "提示框 Tooltip",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "Popover",
+          "title": "弹出框 Popover",
+          "url": "#",
+          "active": 0
+        }
+      ]
+    },
+    {
+      "name": "plugin",
+      "title": "插件",
+      "icon": "fa fa-puzzle-piece",
+      "items": [
+        {
+          "name": "dataTables",
+          "title": "DataTables",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "echarts",
+          "title": "Echarts",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "datepicker",
+          "title": "Date Pickers",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "name": "page",
+      "title": "单页",
+      "icon": "#",
+      "items": [
+        {
+          "name": "login",
+          "title": "登录",
+          "url": "#",
+          "active": 0
+        }
+      ]
+    },
+    {
+      "name": "styleguide",
+      "title": "规范",
+      "icon": "fa fa-book",
+      "items": [
+        {
+          "name": "catalogue",
+          "title": "目录设计",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "Javascript",
+          "title": "Javascript规范",
+          "url": "#",
+          "active": 0
+        },
+        {
+          "name": "css",
+          "title": "CSS规范",
+          "url": "#",
+          "active": 0
+        }
+      ]
+    }
+  ]
+}

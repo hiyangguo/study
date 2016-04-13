@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>test seajs</title>
+    <link rel="stylesheet" href="../static/hello/src/style.css"/>
+</head>
+<body>
+<div id="container">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKb32QfE.png" width="44" height="44" alt="H">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKb2rJHI.png" width="44" height="44" alt="e">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKeZrUpg.png" width="44" height="44" alt="l">
+    <img src="https://i.alipayobjects.com/e/201211/1cqM4u3Ejk.png" width="44" height="44" alt="l">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKoKV2Sa.png" width="44" height="44" alt="o">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKb4JU4K.png" width="44" height="44" alt=",">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKojFDLY.png" width="44" height="44" alt="S">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKb2sBO8.png" width="44" height="44" alt="e">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKb2LmXk.png" width="44" height="44" alt="a">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKb1jcWC.png" width="44" height="44" alt="J">
+    <img src="https://i.alipayobjects.com/e/201211/1cqKojb72y.png" width="44" height="44" alt="S">
+</div>
+
+<!--script-->
+<script src="../test-modules/seajs/seajs/2.2.0/sea-debug.js"></script>
+<script>
+    // Set configuration
+    seajs.config({
+        base: "../test-modules/",
+        alias: {
+            "jquery": "jquery/jquery/1.10.1/jquery.js"
+        }
+    });
+
+    seajs.use('test/main');
+
+</script>
+</body>
+</html>

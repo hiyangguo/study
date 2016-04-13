@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title></title>
+</head>
+<body>
+<div id="example"></div>
+
+<!--script-->
+<script src="lib/react/react.js"></script>
+<script src="lib/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var NotesList = React.createClass({
+        render: function () {
+            return (
+                <ol>
+                    {
+                        this.props.children.map(function (child) {
+                            return <li>{child}</li>
+                        })
+                    }
+                </ol>
+            );
+        }
+    });
+
+    setInterval(function(){
+        str.substr()
+    },1000);
+    React.render(
+        <NotesList>
+            <span>hello</span>
+            <span>world</span>
+        </NotesList>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

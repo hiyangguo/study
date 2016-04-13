@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/velocity.js"></script>
+    <script src="js/velocity.ui.js"></script>
+    <style>
+        .d1 {
+            width: 100px;
+            height: 100px;
+            background: lightpink;
+            color: white;
+            line-height: 100px;
+            text-align: center;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB", STXihei, "Open Sans", sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" class="d1"></div>
+<div id="div2" class="d1"></div>
+<div id="div5" class="d1 hide"></div>
+<div id="div3" class="d1">鼠标移动上来</div>
+<div id="div4" class="d1">鼠标移动上来</div>
+
+<script>
+    (function ($) {
+        var seq = [
+            {
+                e: $("#div1"),
+                p: {
+                    width: "300px"
+                },
+                options: {
+                    duration: "3000"
+                }
+            },
+            {
+                e: $("#div2"),
+                p: {
+                    width: "300px"
+                },
+                options: {
+                    sequenceQueue:false
+                },
+            },{
+                e: $("#div5"),
+                p: "transition.swoopOut",
+                options: {
+                    duration: "2000"
+                }
+            },{
+                e: $("#div5"),
+                p: "transition.swoopIn",
+                options: {
+                    duration: "2000"
+                }
+            }
+        ];
+
+        Velocity.RunSequence(seq);
+
+        $("#div3").on("mouseover",function(){
+            $(this).velocity("callout.bounce")
+        });
+
+        $("#div4").on("mouseover",function(){
+            $(this).velocity("test.pulse")
+        });
+
+        $.Velocity.RegisterEffect('test.pulse',{
+            defaultDuration:300,
+            calls:[
+                [{scaleX:1.1},0.5],
+                [{scaleX:1.0},0.5]
+            ]
+        });
+
+    })(jQuery);
+</script>
+</body>
+</html>

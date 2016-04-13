@@ -1,0 +1,17 @@
+@import "compass/support","compass/css3";
+
+$supported-browsers:chrome,ie;
+@debug browsers();
+//$browser-minimum-versions ("ie":"8");
+
+.test-box-shadow{
+    @include box-shadow(1px 1px 3px 2px #cfcecf);
+}
+
+.test-inline-block{
+    @include inline-block;
+}
+
+.test-opacity{
+    @include opacity(.3);
+}

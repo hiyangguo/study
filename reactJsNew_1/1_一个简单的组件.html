@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>一个简单的组件</title>
+</head>
+<body>
+<div id="app"></div>
+
+<!--script-->
+<script src="lib/react/react.js"></script>
+<script src="lib/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var MessageBox = React.createClass({
+        alertMe: function () {
+            alert("你刚才点了我");
+        },
+        render: function () {
+            return (<h1 onClick={this.alertMe}>你好世界！！！</h1>);
+        }
+    })
+
+    React.render(<MessageBox/>,
+        document.getElementById("app"),
+        function () {
+            console.log("渲染完成了")
+        });
+</script>
+</body>
+</html>

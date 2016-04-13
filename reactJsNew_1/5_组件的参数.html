@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>组件的参数</title>
+</head>
+<body>
+<div id="app"></div>
+
+<!--script-->
+<script src="lib/react/react.js"></script>
+<script src="lib/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var MessageBox = React.createClass({
+        getInitialState: function () {
+            return {
+                isVisible: true,
+                subMessages: [
+                    '我会代码搬砖',
+                    '以及花式板砖',
+                    '不说了,工头叫我回去板砖了。。。。。。'
+                ]
+            }
+        },
+        render: function () {
+            var styleObj = {
+                display: this.state.isVisible ? 'block' : 'none'
+            }
+            return (
+                <div>
+                    <h1 style={styleObj}>{this.props.title}</h1>
+                    <SubMessage messages={this.state.subMessages}/>
+                </div>
+            );
+        }
+    });
+
+    var SubMessage = React.createClass({
+        propTypes:{
+            messages:React.PropTypes.array.isRequired,
+        },
+        getDefaultProps:function(){
+            return{
+                messages:['默认的消息']
+            }
+        },
+        render: function () {
+            var msgs = [];
+            this.props.messages.forEach(function (msg, index) {
+                msgs.push(
+                    <p>码农说:{msg}</p>
+                )
+            });
+
+            return (
+                <div>
+                    {msgs}
+                </div>
+            )
+        }
+    });
+
+    var title = '你好世界！！！';
+
+    var messageBox = React.render(<MessageBox title={title}/>,
+        document.getElementById("app"),
+        function () {
+            console.log("渲染完成了")
+        });
+</script>
+</body>
+</html>

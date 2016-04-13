@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试on triger</title>
+</head>
+<body>
+    <div id="test" style="display: block;width: 500px;height: 500px;border: 1px solid #000000;">
+        测试用的div
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+    <script>
+        function Event(selector, options) {
+            var that = this;
+
+            var _emmiter = $({});
+
+            this.container = $(selector);
+
+            this.options = $(true, {}, options);
+
+            this._bindEvent = function () {
+                var _container = that.container;
+
+
+                ["custom1"].forEach(function (eventName) {
+                    if ($.isFunction(that.options[eventName])) {
+                        that.on(eventName, that.options[eventName]);
+                    }
+                });
+
+                _container.on('click', function () {
+                    //console.log(1);
+                    //console.log(_emmiter.data('events'));
+                    _emmiter.trigger('custom1', ['参数1', '参数2']);
+                });
+            }
+
+
+            this.on = function () {
+                _emmiter.on.apply(_emmiter, arguments);
+            }
+
+            this.off = function () {
+                _emmiter.off.apply(_emmiter, arguments);
+            }
+
+
+            this._init = function () {
+                this._bindEvent();
+            }
+
+            this._init();
+        }
+
+
+        var ev = new Event('#test');
+        ev.on('custom1', function (event, param1, param2) {
+            console.log(event);
+            console.log(param1, param2);
+            console.log('ok');
+        });
+    </script>
+</body>
+</html>

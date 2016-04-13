@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>捕获一个鼠标单击事件</title>
+</head>
+<body>
+<script type="text/javascript">
+    function onclick_callback(event) {
+        var eType = event.type;
+        /* the following is for compatability */
+        /* Moz populates the target property of the event object */
+        /* IE populates the srcElement property */
+        var eTarget = event.target || event.srcElement;
+
+        alert("Captured Event (type=" + eType + ", target=" + eTarget);
+    }
+</script>
+<span onclick="onclick_callback(event);">Click Here</span>
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿/*! normalize.css v3.0.0 | Base | MIT License | git.io/normalize */html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}/*! normalize.css v3.0.0 | HTML5 Display Definitions | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}/*!
+ * CONTENTS
+ *
+ * SETTINGS
+ * variables..............变量集中存储文件
+ * mixin..................mixin集中存储文件
+ *
+ * TOOLS
+ *
+ * COMPONENTS
+ * reset.................Compass内置浏览器重置样式文件
+ *
+ * BUSINESS
+ *
+ * BASE
+ * screen.................针对当前站点主页的样式修饰
+ */.headline{font-family:Braggadocio,Arial,Verdana,Helvetica,sans-serif}.main-sec{font-family:Arial,Verdana,Helvetica,sans-serif}.main-sec-headline{font-family:Arial,Verdana,Helvetica,sans-serif;font-size:12px}.main-sec-detail{font-size:12px}p{color:#8000ff}@media (min-width: 768px){.web-demo-sec{width:50%;float:left}}.web-demo-sec:hover{background-color:#f5f5f5}.serious-error,.most-serious-error{color:#f00}.instrusion.serious-error,.instrusion.most-serious-error{background-image:url("/images/hacked.png")}.serious-error,.most-serious-error{border:1px #f00}.most-serious-error{background:#fffff5}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>3_值变量及语试量</title>
+</head>
+<body>
+<script>
+    /*
+     * JavaScript是一种支持动态数据类型的语言。
+     * 这意味着你定义变量时不必指定数据类型，而数据类型会在脚本执行需要时自动转换。
+     * */
+    var answer = 42; //定义变量
+
+    answer = "hello world";//然后，你还可以给同一个变量分配一个字符串值
+
+    /*
+     * 在包含加法运算符的数字和字符串表达式中，JavaScript 会把数字值转换为字符串。
+     * */
+    x = "The answer is " + 42 // "The answer is 42"
+    y = 42 + " is the answer" // "42 is the answer"
+    console.log("x=" + x);
+    console.log("y=" + y);
+    /*
+     * 在包含其它运算符（译注：如下面的“-”）时，JavaScript语言不会把数字变为字符
+     * */
+    console.log("37" - 7);   // 30
+    console.log("37" + 7); // "377"
+    /*
+     * 单目加法运算符
+     * 将字符串转换为数字的另一种方法是使用单目加法运算符。
+     * */
+    console.log('"1.1" + "1.1" = ' + "1.1" + "1.1")   //"1.11.1"
+    console.log('(+"1.1") + (+"1.1") = ' + ((+"1.1") + (+"1.1")))   //2..2   Note: the parentheses are added for clarity, not required.
+    /*
+     *你可以用以下两种方式声明变量：
+     *使用关键词 var。例如，var x = 42。这个语法可以同时用来声明局部和全局变量。
+     * 直接赋值。例如，x = 42。这样就声明了一个全局变量并会导致JavaScript编译时产生一个严格警告。因而你应避免使用这种非常规格式。
+     * */
+
+</script>
+</body>
+</html>

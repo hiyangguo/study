@@ -1,0 +1,133 @@
+@charset "UTF-8";
+@import "compass/reset";
+@import "compass/typography";
+@import "compass/css3";
+
+a {
+    @include hover-link;
+    //link-colors($normal, $hover, $active, $visited, $focus) ;
+    @include link-colors(#00c, #00c, #c0c, #ccc, #cc0);
+
+    &.unstyle {
+        //@include unstyled-link; //抹去a的样式
+    }
+}
+
+.list-unstyled {
+    @include no-bullets; //ul li 去除圆点
+}
+
+.list-unstyled-li {
+    @include no-bullet; //只去除某一个li
+}
+
+.list-inline {
+    @include inline-list;
+}
+
+.list-horizontal {
+    @include horizontal-list(false); //horizontal-list($padding, $direction)
+}
+
+/*
+	ChunkFive Ex, 400
+*/
+
+.list-inline-block {
+    @include inline-block-list(7px); //inline-block-list($padding)
+}
+
+.text-force-wrap {
+    //强制换行
+    @include force-wrap;
+}
+
+.text-force-wrap {
+    //强制不换行
+    @include nowrap;
+}
+
+$use-mozilla-ellipsis-binding: true;
+.text-ellipsis {
+    //文本溢出省略号
+    @include ellipsis;
+}
+
+.text-hide {
+    @include hide-text;
+}
+
+/*HELPERS*/
+
+//图片替换文字 http://cdn.qq.com/images/find-btn.png
+.btn-find {
+    @include replace-text("http://cdn.qq.com/images/find-btn.png");
+}
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+@include establish-baseline;
+body {
+    @include debug-vertical-alignment(); //测试垂直韵律
+}
+
+h1 {
+    /*
+    font-size: 3em; //48 ÷ 16 = 3
+    line-height: 1.5em; //72px
+    */
+    @include adjust-font-size-to(48px);//调整垂直韵律
+}
+
+h2 {
+    /*
+    font-size: 2.25em; //36 ÷ 16 = 2.25
+    line-height: 1.33333333; //48px
+    */
+    @include adjust-font-size-to(36px);
+}
+
+h3 {
+    @include adjust-font-size-to(24px);
+}
+
+h4 {
+    @include adjust-font-size-to(21px);
+}
+
+h5 {
+    @include adjust-font-size-to(18px);
+}
+
+h6 {
+    @include adjust-font-size-to(16px);
+}
+
+p {
+    @include adjust-font-size-to(16px);
+
+    @include leader(); //自动计算marging
+    @include trailer(); //自动计算padding
+}
+
+
+/*Data URI 使用图片*/
+.analyze-logo{
+    background-image: inline-image('icon-company-logo1.jpg'); //多使用30%cpu 4倍内存消耗 不支持ie6、7、8
+}
+
+/*图片代时间戳*/
+.analyze-logo{ // cache buster
+    //background-image: url("../images/icon-company-logo1.jpg/?t=201508091234");
+    background-image: image-url("icon-company-logo1.jpg"); //图片代时间戳
+    //类似的还有stylesheet-url和font-url
+}
+
+//@debug compass_env();
+//添加一个字体 需@import "compass/css3";
+@include font-face("FontAwesonme",font_files("FontAwesome.otf","fontawesome-webfont.eot","fontawesome-webfont.svg","fontawesome-webfont.ttf","fontawesome-webfont.woff"));
+
+/*#{selector_extend("div,p,span",".test",".test")}{
+    display: block;
+}*/
+

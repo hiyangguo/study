@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>reveal.js - The HTML Presentation Framework</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/custom.css"/>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <div class="slides">
+            <!--PAGE 1-->
+            <section>
+                <img src="img/logo.png" alt="ReactJs"/>
+
+                <h3>React.js知识分享</h3>
+
+                <p>
+                    <small>Share by <a href="http://www.lovetutu.cn">杨过</a> / <a
+                        href="https://git.hypers.com/u/Godfery">@sugary</a></small>
+                </p>
+            </section>
+            <!--PAGE 1 END-->
+            <!--PAGE 2-->
+            <section>
+                <section>
+                    <h1>React有什么不同？</h1>
+                </section>
+                <section>
+                    <h2>一个用于创建</h2>
+
+                    <h2><span class="orange">可聚合</span>，<span class="orange">可复用</span>web组件的js库</h2>
+                </section>
+                <section>
+                    <h3>只提供了</h3>
+
+                    <h2>前端 <span class="orange">mvc</span>中的 <span class="ornge">“V”</span></h2>
+                </section>
+            </section>
+            <!--PAGE 2 END-->
+
+            <!--PAGE 3 -->
+            <section>
+                <h1>为什么使用React?</h1>
+            </section>
+            <!--PAGE 3 END -->
+
+            <!--PAGE 3#1-->
+            <section>
+                <section>
+                    <h4 class="orange">#1</h4>
+
+                    <h2>组件化,</h2>
+
+                    <h3>而不是写一大堆HTML模版</h3>
+                </section>
+                <section>
+                    <h3>JS逻辑与HTML标签</h3>
+
+                    <h3><span class="orange">紧密连接</span>并且 <span class="orange">极其容易理解</span></h3>
+                </section>
+                <section>
+                    <h3>一个angularJS组件示例</h3>
+                    <h4 class="orange">示例代码</h4>
+                    <img src="img/angular_demo.png" alt=""/>
+                </section>
+                <section>
+                    <h3>与Reac进行对比</h3>
+                    <h4 class="orange">示例代码</h4>
+                    <img src="img/react_demo.png" alt=""/>
+                </section>
+            </section>
+            <!--PAGE 3#1 END -->
+
+            <!--PAGE 3#2 -->
+            <section>
+                <section>
+                    <h4 class="orange">#2</h4>
+
+                    <h2>单项数据流</h2>
+                </section>
+                <section>
+                    <h3>数据一但更新，就直接重新渲染整个app</h3>
+                    <h4>这是让React如此牛逼的 <span class="orange">关键点</span></h4>
+                </section>
+                <section>
+                    <h2>管理UI的状态并不简单</h2>
+                    <ul>
+                        <li>修改DOM树</li>
+                        <li>修改数据</li>
+                        <li>接受用户的输入</li>
+                        <li>异步API数据请求</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>与传统的服务器端渲染相似</h2>
+                    <img src="img/compare.png"/>
+                </section>
+                <section>
+                    <h2>将不再有</h2>
+                    <ul>
+                        <li>魔法般的双向数据绑定</li>
+                        <li>数据模型的肮脏检查</li>
+                        <li>确切的DOM操作</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>这种渲染的优势</h2>
+                    <ul>
+                        <li>每个组件的功能，很直观</li>
+                        <li>结果更可以预测</li>
+                        <li>组件之间的关系更加清晰</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>一个React的组件可以理解成</h3>
+
+                    <h3>一个独立的函数</h3>
+
+                    <p>接受参数,可复用,可以传递,返回结果(渲染组件)</p>
+                </section>
+            </section>
+            <!--PAGE 3#2 END-->
+
+            <!--PAGE 3#3-->
+            <section>
+                <section>
+                    <h4 class="orange">#3</h4>
+
+                    <h2>虚拟DOM树</h2>
+                </section>
+                <section>
+                    <h2>Javascript虽然很快</h2>
+
+                    <p class="fragment">DOM操作却相当慢</p>
+                </section>
+                <section>
+                    <h2>React每次更新时</h2>
+                    <ul>
+                        <li>React重建DOM树</li>
+                        <li>找到与上个版本的DOM的差异</li>
+                        <li>计算出最新的DOM更新操作</li>
+                        <li>从操作队列中<span>批量</span> 的执行DOM更新操作</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>可以在<span>Node.js</span>中运行</h2>
+                    <ul>
+                        <li>服务器与客户端公用逻辑</li>
+                        <li>SEO友好，便于生成缓存的单页应用</li>
+                        <li>直接渲染特定的页面而不用渲染整个app</li>
+                    </ul>
+                </section>
+            </section>
+            <!--PAGE 3#2 END-->
+
+            <!--PAGE 4-->
+            <section>
+                <h2>hello Ract</h2>
+                <pre><code data-trim contenteditable>
+                    var HelloWorld = React.createClass({
+                    render:function(){
+                    return <p>Hello {this.props.name}</p>
+                    }
+                    });
+                </code></pre>
+                <h3>将组件渲染到页面</h3>
+                <pre><code data-trim contenteditable>
+                    React.render(
+                    <HelloWorld name="John"/>
+                    ,
+                    document.getElementById("app")
+                    )
+                </code></pre>
+                <img src="img/hello_world.png">
+            </section>
+            <!--PAGE 4 END-->
+
+            <!--PAGE 5-->
+            <section>
+                <section>
+                    <h3 class="orange">简要展示</h3>
+
+                    <h2>JSX是什么</h2>
+                </section>
+                <section>
+                    <h2>Javascript的XML <span class="orange">拓展语法</span></h2>
+
+                    <h3 class="fragment">采用你所熟悉&易于理解的语法来定义DOM树</h3>
+                </section>
+                <section>
+                    <h2>为什么要使用 <span class="orange">JSX</span></h2>
+
+                    <h3 class="fragment">易于 <span class="orange">书写和维护</span></h3>
+                    <h3 class="fragment">让复杂的DOM结构 <span class="orange">更易阅读</span></h3>
+                    <h3 class="fragment">它 <span class="orange">没有修改</span>JavaScript语义</h3>
+                </section>
+                <section>
+                    <h2>React是如何使用JSX的</h2>
+                    <pre><code data-trim contenteditable>
+                        <p class="hello">
+                            Hello {this.props.name}
+                        </p>
+                    </code></pre>
+                    <h3>Reat的方式</h3>
+                    <pre><code data-trim contenteditable>
+                        React.createElement("p",{className:"hello"},
+                        "hello ",this.props.name
+                        );
+                    </code></pre>
+                </section>
+            </section>
+            <!--PAGE 5 END-->
+
+            <!--PAGE 6-->
+            <section>
+                <section>
+                    <h3>React的缺点</h3>
+                </section>
+            </section>
+            <!--PAGE 6 END-->
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                {
+                    src: 'lib/js/classList.js', condition: function () {
+                    return !document.body.classList;
+                }
+                },
+                {
+                    src: 'plugin/markdown/marked.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+                },
+                {
+                    src: 'plugin/markdown/markdown.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+                },
+                {
+                    src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                    return !!document.querySelector('pre code');
+                }, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+                },
+                {src: 'plugin/zoom-js/zoom.js', async: true},
+                {src: 'plugin/notes/notes.js', async: true}
+            ]
+        });
+
+    </script>
+
+</body>
+</html>

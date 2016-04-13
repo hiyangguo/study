@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@import "compass/utilities";
+//@import "retina-sprites";
+
+$sprites-sprite-dimensions : true;//如果是true则生成的类名添加宽高
+$sprites-layout            : smart;//图片排列方式vertical horizontal diagonal smart
+@import "sprites/*.png"; //相对路径
+
+@include  all-sprites-sprites(); //中间是文件夹名
+
+//如果单独调用某一张图片
+.main-logo{
+    @include sprites-sprite("chr");
+}
+
+//$sprites: sprite-map("retina-version/sprites/*png");
+//$sprites2x: sprite-map("retina-version/sprites-retina/*png");
+//
+//
+//.icon-file{
+//    @include retina-sprite(file);
+//}
+//
+//.icon-calendar{
+//    @include retina-sprite(calendar);
+//}

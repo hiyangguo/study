@@ -1,0 +1,161 @@
+@charset "utf-8";
+/*
+    * Busy 收集 整理
+ */
+/*雅虎（YUI 3）reset*/
+/*Normalize.css*/
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+img {
+  border: none;
+}
+input,
+textarea {
+  outline: none;
+  border: none;
+  background: none;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  font-family: arial,"Hiragino Sans GB","Microsoft Yahei","微软雅黑","宋体",宋体,Tahoma,Arial,Helvetica,STHeiti;
+}
+input,
+textarea,
+select {
+  font-family: arial,"Hiragino Sans GB","Microsoft Yahei","微软雅黑","宋体",宋体,Tahoma,Arial,Helvetica,STHeiti;
+}
+.redColor {
+  background: lightcoral;
+  color: white;
+  font-size: 18px;
+}
+/*.generate-columns(@n, @i: 1) when (@i =< @n) {
+  　　.column-@{i} {
+    　　　　width: (@i * 100% / @n);
+      }
+  .generate-columns(@n, (@i + 1));
+}
+
+.generate-columns(4);*/
+/*
+生成n个wn的样式
+如.w10{width:10px}
+*/
+.w10 {
+  width: 10px;
+}
+.w20 {
+  width: 20px;
+}
+.w30 {
+  width: 30px;
+}
+.w40 {
+  width: 40px;
+}
+.w50 {
+  width: 50px;
+}
+.w60 {
+  width: 60px;
+}
+.w70 {
+  width: 70px;
+}
+.w80 {
+  width: 80px;
+}
+.w90 {
+  width: 90px;
+}
+.w100 {
+  width: 100px;
+}
+.w110 {
+  width: 110px;
+}
+.w120 {
+  width: 120px;
+}
+.w130 {
+  width: 130px;
+}
+.w140 {
+  width: 140px;
+}
+.w150 {
+  width: 150px;
+}
+.w160 {
+  width: 160px;
+}
+.w170 {
+  width: 170px;
+}
+.w180 {
+  width: 180px;
+}
+.w190 {
+  width: 190px;
+}
+.w200 {
+  width: 200px;
+}
+.w210 {
+  width: 210px;
+}
+.w220 {
+  width: 220px;
+}
+.w230 {
+  width: 230px;
+}
+.w240 {
+  width: 240px;
+}
+.w250 {
+  width: 250px;
+}
+.w260 {
+  width: 260px;
+}
+.w270 {
+  width: 270px;
+}
+.w280 {
+  width: 280px;
+}
+.w290 {
+  width: 290px;
+}
+.w300 {
+  width: 300px;
+}
+.H500 {
+  color: #bfffff;
+}
+.H600 {
+  color: #95e6e6;
+}
+.color {
+  color50: #ffffff;
+  color100: #ffffff;
+  color200: #ffffff;
+  color300: #ffffff;
+  color400: #ffffff;
+  color500: #beffff;
+  color600: #81ffff;
+  color700: #01ffff;
+  color800: #00bebe;
+  color900: #005858;
+}

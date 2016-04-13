@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #test{
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        #test li{
+            width: 200px;
+            height: 291px;
+            float: left;
+            list-style: none;
+            display: block;
+        }
+
+        #test li img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul id="test"></ul>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            for(var i = 000;i<600;i++){
+                var img = document.createElement("img");
+                var li = document.createElement("li");
+                $(img).attr("src","http://xuegong.stiei.edu.cn:9091/framework/stuphoto/201314A"+i+".jpg");
+                $(li).append(img);
+                $("#test").append(li);
+            }
+
+        });
+
+        [].forEach.call($,$(""),function(a){
+            a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16))
+        })
+    </script>
+</body>
+</html>

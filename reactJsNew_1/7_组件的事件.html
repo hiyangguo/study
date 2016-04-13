@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>组件的事件</title>
+</head>
+<body>
+<div id="app"></div>
+
+<!--script-->
+<script src="lib/react/react.js"></script>
+<script src="lib/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var FormApp = React.createClass({
+        getInitialState: function () {
+            return {
+                inputValue: 'input value',
+                selectValue: 'A',
+                radioValue: 'B',
+                checkValue: [],
+                textareaValue: 'some text here...'
+            }
+        },
+        handleSubmit: function (e) {
+            e.preventDefault();
+            console.log('form submittiing');
+            console.log(this.refs);
+            //console.log(e);
+            //对于首先获取dom对象再取其value
+            //方法一:
+            //console.log(this.refs['goodInput'].getDOMNode().value);
+            //方法二：
+            //console.log(React.findDOMNode(this.refs['goodInput']).value);
+            //对于radio和checkbox使用onchange解决
+            var formData = {
+                input: React.findDOMNode(this.refs['goodInput']).value,
+                select: React.findDOMNode(this.refs['goodSelect']).value,
+                textarea: React.findDOMNode(this.refs['goodTextarea']).value,
+                radio: this.state.radioValue,
+                checkValue: this.state.checkValue
+            }
+            console.log(formData);
+            //refs可以获取所有的具有ref属性的dom，并以React对象返回
+            //在设置ref的时候不仅可以使用string而且可以使用function
+            //如<input ref={function(comp){ React.findDOMNode(comp).focus()}} type="text" defaultValue={this.state.inputValue}/>
+            this.refs['goodRadio'].saySomething();
+        },
+        handleRadio: function (e) {
+            this.setState({
+                radioValue: e.target.value
+            });
+        },
+        handleCheck: function (e) {
+            var checkValues = this.state.checkValue.slice();
+            var newVal = e.target.value;
+            var index = checkValues.indexOf(newVal);
+            if (index === -1) {
+                checkValues.push(newVal);
+            } else {
+                checkValues.splice(index, 1);
+            }
+            this.setState({
+                checkValue: checkValues
+            });
+        },
+        render: function () {
+            //如果使用value则需要绑响应的change事件 否则将导致无法修改值
+            //如果想绑定默认值应使用defaultValue
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <input ref="goodInput" type="text" defaultValue={this.state.inputValue}/>
+                    <br/>
+                    选项:
+                    <select ref="goodSelect" defalutValue={this.state.selectValue} onChange={this.handleRadio}>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select>
+                    <p>radio button!</p>
+                    <RadioButton ref="goodRadio" handleRadio={this.handleRadio}/>
+                    <br/>
+                    <CheckBox handleCheck={this.handleCheck}/>
+                    <br/>
+                    <textarea ref="goodTextarea" defaultValue={this.state.textareaValue}></textarea>
+                    <br/>
+                    <button type="submit">提交</button>
+                </form>
+            )
+        }
+    });
+
+    var RadioButton = React.createClass({
+        saySomething: function () {
+            alert('yo yo! whats up man!');
+        },
+        render: function () {
+            return (
+                <span>
+                    A
+                    <input name="goodRadio" onChange={this.props.handleRadio} type="radio" value="A"/>
+                    B
+                    <input name="goodRadio" onChange={this.props.handleRadio} type="radio" defaultChecked value="B"/>
+                    C
+                    <input name="goodRadio" onChange={this.props.handleRadio} type="radio" value="c"/>
+                </span>
+            );
+        }
+    });
+
+    var CheckBox = React.createClass({
+        render: function () {
+            return (
+                <span>
+                    A
+                    <input name="goodCheckBox" onChange={this.props.handleCheck} type="checkbox" value="A"/>
+                    B
+                    <input name="goodCheckBox" onChange={this.props.handleCheck} type="checkbox" value="B"/>
+                    C
+                    <input name="goodCheckBox" onChange={this.props.handleCheck} type="checkbox" value="C"/>
+                </span>
+            )
+        }
+    });
+
+    var formApp = React.render(<FormApp/>,
+        document.getElementById("app"),
+        function () {
+            console.log("渲染完成了")
+        });
+</script>
+</body>
+</html>

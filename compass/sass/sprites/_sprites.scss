@@ -1,0 +1,129 @@
+@import "compass/utilities/sprites/base";
+
+// General Sprite Defaults
+// You can override them before you import this file.
+$sprites-sprite-dimensions : false !default;
+$sprites-use-percentages   : false !default;
+$sprites-position          : 0% !default;
+$sprites-spacing           : 0 !default;
+$sprites-repeat            : no-repeat !default;
+$sprites-prefix            : '' !default;
+$sprites-clean-up          : true !default;
+$sprites-layout            : vertical !default;
+$sprites-inline            : false !default;
+$sprites-sort-by           : 'none' !default;
+$sprites-class-separator   : $default-sprite-separator !default;
+$sprites-sprite-base-class : ".sprites#{$sprites-class-separator}sprite" !default;
+
+
+ // These variables control the generated sprite output
+ // You can override them selectively before you import this file.
+
+   $sprites-active4-position: $sprites-position !default;
+   $sprites-active4-spacing:  $sprites-spacing !default;
+   $sprites-active4-repeat:   $sprites-repeat !default;
+
+   $sprites-address-position: $sprites-position !default;
+   $sprites-address-spacing:  $sprites-spacing !default;
+   $sprites-address-repeat:   $sprites-repeat !default;
+
+   $sprites-bg-position: $sprites-position !default;
+   $sprites-bg-spacing:  $sprites-spacing !default;
+   $sprites-bg-repeat:   $sprites-repeat !default;
+
+   $sprites-chr-position: $sprites-position !default;
+   $sprites-chr-spacing:  $sprites-spacing !default;
+   $sprites-chr-repeat:   $sprites-repeat !default;
+
+   $sprites-click-position: $sprites-position !default;
+   $sprites-click-spacing:  $sprites-spacing !default;
+   $sprites-click-repeat:   $sprites-repeat !default;
+
+   $sprites-contact-position: $sprites-position !default;
+   $sprites-contact-spacing:  $sprites-spacing !default;
+   $sprites-contact-repeat:   $sprites-repeat !default;
+
+
+ $sprites-sprites: sprite-map("sprites/*.png",
+
+   $sprites-active4-position: $sprites-active4-position,
+   $sprites-active4-spacing:  $sprites-active4-spacing,
+   $sprites-active4-repeat:   $sprites-active4-repeat,
+
+   $sprites-address-position: $sprites-address-position,
+   $sprites-address-spacing:  $sprites-address-spacing,
+   $sprites-address-repeat:   $sprites-address-repeat,
+
+   $sprites-bg-position: $sprites-bg-position,
+   $sprites-bg-spacing:  $sprites-bg-spacing,
+   $sprites-bg-repeat:   $sprites-bg-repeat,
+
+   $sprites-chr-position: $sprites-chr-position,
+   $sprites-chr-spacing:  $sprites-chr-spacing,
+   $sprites-chr-repeat:   $sprites-chr-repeat,
+
+   $sprites-click-position: $sprites-click-position,
+   $sprites-click-spacing:  $sprites-click-spacing,
+   $sprites-click-repeat:   $sprites-click-repeat,
+
+   $sprites-contact-position: $sprites-contact-position,
+   $sprites-contact-spacing:  $sprites-contact-spacing,
+   $sprites-contact-repeat:   $sprites-contact-repeat,
+
+ $layout   : $sprites-layout,
+ $cleanup  : $sprites-clean-up,
+ $spacing  : $sprites-spacing,
+ $position : $sprites-position,
+ $sort-by  : $sprites-sort-by
+ );
+
+
+// All sprites should extend this class
+// The sprites-sprite mixin will do so for you.
+@if $sprites-inline {
+  #{$sprites-sprite-base-class} {
+    background-image: inline-sprite($sprites-sprites);
+  }
+} @else {
+  #{$sprites-sprite-base-class} {
+    background-image: sprite-url($sprites-sprites);
+    background-repeat: no-repeat;
+  }
+}
+//sass functions to return the dimensions of a sprite image as units
+
+  @function sprites-sprite-width($name) {
+    @return sprite-width($sprites-sprites, $name);
+  }
+
+  @function sprites-sprite-height($name) {
+    @return sprite-height($sprites-sprites, $name);
+  }
+
+
+// Use this to set the dimensions of an element
+// based on the size of the original image.
+@mixin sprites-sprite-dimensions($name) {
+  @include sprite-dimensions($sprites-sprites, $name)
+}
+
+// Move the background position to display the sprite.
+@mixin sprites-sprite-position($name, $offset-x: 0, $offset-y: 0, $use-percentages: $sprites-use-percentages) {
+  @include sprite-background-position($sprites-sprites, $name, $offset-x, $offset-y, $use-percentages)
+}
+
+// Extends the sprite base class and set the background position for the desired sprite.
+// It will also apply the image dimensions if $dimensions is true.
+@mixin sprites-sprite($name, $dimensions: $sprites-sprite-dimensions, $offset-x: 0, $offset-y: 0, $use-percentages: $sprites-use-percentages, $separator: $sprites-class-separator) {
+  @extend #{$sprites-sprite-base-class};
+  @include sprite($sprites-sprites, $name, $dimensions, $offset-x, $offset-y, $use-percentages, $separator: $separator);
+}
+
+@mixin sprites-sprites($sprite-names, $dimensions: $sprites-sprite-dimensions, $prefix: sprite-map-name($sprites-sprites), $offset-x: 0, $offset-y: 0, $use-percentages: $sprites-use-percentages, $separator: $sprites-class-separator) {
+  @include sprites($sprites-sprites, $sprite-names, $sprites-sprite-base-class, $dimensions, $prefix, $offset-x, $offset-y, $use-percentages, $separator: $separator)
+}
+
+// Generates a class for each sprited image.
+@mixin all-sprites-sprites($dimensions: $sprites-sprite-dimensions, $prefix: sprite-map-name($sprites-sprites), $offset-x: 0, $offset-y: 0, $use-percentages: $sprites-use-percentages, $separator: $sprites-class-separator) {
+  @include sprites-sprites(active4 address bg chr click contact, $dimensions, $prefix, $offset-x, $offset-y, $use-percentages, $separator: $separator);
+}

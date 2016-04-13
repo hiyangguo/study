@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>双向数据流</title>
+</head>
+<body>
+<div id="app"></div>
+
+<!--script-->
+<!--<script src="lib/react/react.js"></script>-->
+<script src="lib/react/react-with-addons.js"></script>
+<script src="lib/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    //首先引入react-with-addons.js
+    //之后就可以使用双向数据流进行数据传递
+    var EasyForm = React.createClass({
+        mixins: [React.addons.LinkedStateMixin],
+        getInitialState: function () {
+            return {
+                message: 'react is awesome!',
+                isReactAwesome: true
+            }
+        },
+        render: function () {
+            return (
+                <div>
+                    <h1>我想说：{this.state.message}</h1>
+                    <h2>React是不是很好用？ {this.state.isReactAwesome ? '非常好用' : '一般般。。。'}</h2>
+                    <input type="text" valueLink={this.linkState('message')}/>
+                    <input type="checkbox" checkedLink={this.linkState('isReactAwesome')}/>
+                    <br/>
+                    <SubComp messageLink={this.linkState('message')} likeLink={this.linkState('isReactAwesome')}/>
+                </div>
+            )
+        }
+    });
+
+    var SubComp = React.createClass({
+        /*
+         * var a = {aa:"1",ab:"2"}
+         * var b = [1,2,3]
+         * func(...a,...b){
+         *   //展开操作符
+         *   //详见https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator
+         *   //http://facebook.github.io/react/docs/jsx-spread.html
+         * }
+         * */
+        render: function () {
+            return (
+                <div>
+                    <h3>这是一个子组件</h3>
+                    <SubSubComp {...this.props}/>
+                </div>
+            )
+        }
+    });
+
+
+    var SubSubComp = React.createClass({
+        render: function () {
+            return (
+                <div>
+                    <p>你想说什么？</p>
+                    <input type="text" valueLink={this.props.messageLink}/>
+                    <p>你稀罕React么？
+                        <input type="checkbox" checkedLink={this.props.likeLink}/>
+                    </p>
+                </div>
+            )
+        }
+    })
+
+    React.render(<EasyForm/>, document.getElementById("app"));
+</script>
+</body>
+</html>

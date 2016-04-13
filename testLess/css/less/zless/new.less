@@ -1,0 +1,100 @@
+﻿//margin
+.mt(@w: 5px) {
+    margin-top: @w;
+}
+
+.mr(@w: 5px) {
+    margin-right: @w;
+}
+
+.mb(@w: 5px) {
+    margin-bottom: @w;
+}
+
+.ml(@w: 5px) {
+    margin-left: @w;
+}
+
+//字体
+.font-fh() {
+    font-family: "黑体",SimHei;
+}
+
+.font-baidu(){
+    font-family: ~'arial,"Hiragino Sans GB","Microsoft Yahei","微软雅黑","宋体",宋体,Tahoma,Arial,Helvetica,STHeiti';
+}
+
+//链接
+.a_hov_u(@color: #2CA98E,@fs: 16px) { //普通超链接:hover下划线
+    color: @color;
+    font-size: @fs;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+//绝对据中
+.pos (c){
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.a_hov_c(@c: #2CA98E,@c_h: #89c1a6) { //普通超链接:hover变颜色
+    color: @c;
+
+    &:hover {
+        color: @c_h;
+    }
+}
+
+//按钮
+.btn(@width: 100px,@height: 27px,@back_color: #fff,@borde_color: #89c1a6,@border_radius: 5px,@color: #7d7d7d) {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 10px;
+    color: @color;
+    background: @back_color;
+    border: 1px solid @borde_color;
+    border-radius: @border_radius;
+    width: @width;
+    height: @height;
+    line-height: @height;
+
+    &:hover {
+        background: @color;
+        border: 1px solid @borde_color;
+        color: @back_color;
+    }
+}
+
+.btn_a(@width: 100px,@height: 27px,@back_color: #fff,@borde_color: #89c1a6,@border_radius: 5px,@color: #7d7d7d){
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 10px;
+    color: @color;
+    background: @back_color;
+    border: 1px solid @borde_color;
+    border-radius: @border_radius;
+    width: @width;
+    height: @height;
+    line-height: @height;
+}
+
+.btn_hover(@back_color: #89c1a6,@borde_color: #89c1a6,@color: #fff) {
+    background: @back_color;
+    border: 1px solid @borde_color;
+    color: @color;
+}
+
+//pie支持
+.pie(){
+    position:relative;
+    behavior:url(/PIE.htc);
+}

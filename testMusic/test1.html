@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title></title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+<div class="bd">
+    <ul id="playlist-demo">
+        <li data-link="mp3/test1.mp3"><i class="play-btn"></i>Beautiful Times(mp3)</li>
+        <li data-link="mp3/test2.mp3"><i class="play-btn"></i>我在人民广场吃炸鸡(mp3)</li>
+        <li data-link="mp3/test3.mp3"><i class="play-btn"></i>恶作剧(mp3)</li>
+    </ul>
+</div>
+<!--SCRIPT-->
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<!-- 引入对应版本的MuPlayer，要置于jQuery之后。-->
+<script src="http://apps.bdimg.com/libs/muplayer/0.9.2/player.js"></script>
+
+<script>
+    // 通过全局变量的方式初始化
+    var player = new _mu.Player({
+                mode: 'list',
+                baseDir: 'http://apps.bdimg.com/libs/muplayer/0.9.2/'
+            }),
+            $pl = $('#playlist-demo'),
+            reset = function () {
+                $pl.find('> li').removeClass('playing pause')
+                        .find('.time').remove();
+            },
+            findCurrItem = function () {
+                var link = player.getCur();
+                link = link.substring(link.indexOf('mp3/'));
+                return $pl.find('[data-link="' + link + '"]');
+            },
+            $time = $('<span class="time"></span>');
+
+    $pl.on('click', '> li', function () {
+        var $this = $(this),
+                sids;
+
+        if ($this.hasClass('playing')) {
+            player.pause();
+        } else if ($this.hasClass('pause')) {
+            player.play();
+        } else {
+            sids = $this.parent().find('> li').map(function () {
+                return $(this).data('link');
+            }).get();
+
+            player.reset().add(sids)
+                    .setCur($this.data('link')).play();
+        }
+    });
+
+    player.on('playing pause', function () {
+        reset();
+        findCurrItem().addClass(player.getState()).append($time);
+    }).on('ended', reset).on('timeupdate', function () {
+        $time.text(player.curPos(true) + ' / ' + player.duration(true));
+    });
+</script>
+</body>
+</html>

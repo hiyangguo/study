@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>组件的状态-更新</title>
+</head>
+<body>
+<div id="app"></div>
+
+<!--script-->
+<script src="lib/react/react.js"></script>
+<script src="lib/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var MessageBox = React.createClass({
+        getInitialState: function () {
+            console.log('getInitialState')
+            return {
+                count: 0
+            }
+        },
+        getDefaultProps: function () {
+            console.log('getDefaultProps');
+            return {};
+        },
+        /* componentWillMount: function () {
+         console.log("componentWillMount");
+         },
+         componentDidMount: function () {
+         console.log("componentDidMount");
+         },
+         componentWillUnmount: function () {
+         console.log("componentWillUnmount:you are trying to kill me");
+         },*/
+        shouldComponentUpdate: function (nextProps, nextState) {
+            console.log("shouldComponentUpdate");
+            if (nextState.count > 10) {
+                return false
+            }
+            return true;
+        },
+        componentWillUpdate: function (nextProps, nextState) {
+            console.log("componentWillUpdate");
+        },
+        componentDidUpdate: function (nextProps, nextState) {
+            console.log("componentDidUpdate");
+        },
+        doUpdate: function () {
+            this.setState({
+                count: this.state.count + 1
+            })
+        },
+        killMyself: function () {
+            React.unmountComponentAtNode(document.getElementById("app"));
+        },
+        render: function () {
+            console.log("render");
+            return (
+                <div>
+                    <h1>计数:{this.state.count}</h1>
+                    <button onClick={this.killMyself}>卸载掉这个组件</button>
+                    <button onClick={this.doUpdate}>手动更新一下</button>
+                    <SubMessage count={this.state.count}/>
+                </div>
+            );
+        }
+    });
+
+    var SubMessage = React.createClass({
+        componentWillReceiveProps: function (nextProps) {
+            console.log("子组件nextProps:" + nextProps.count);
+        },
+        shouldComponentUpdate: function (nextProps, nextState) {
+            if (nextProps.count > 5) {
+                return false;
+            }
+            return true;
+        },
+        render: function () {
+            return (
+                <div>
+                    <h3>当前计数是:{this.props.count}</h3>
+                    <Footer/>
+                </div>
+            )
+        }
+    });
+
+    var Footer = React.createClass({
+        render: function () {
+            return (
+                <div>
+                    <small>因为我在用代码创造</small>
+                </div>
+            )
+        }
+    })
+
+
+    var messageBox = React.render(<MessageBox/>,
+        document.getElementById("app"),
+        function () {
+            console.log("渲染完成了")
+        });
+</script>
+</body>
+</html>

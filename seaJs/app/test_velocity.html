@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title></title>
+    <style>
+        .d1 {
+            width: 100px;
+            height: 100px;
+            background: lightpink;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" class="d1"></div>
+<div id="div2" class="d1"></div>
+
+<script src="../sea-modules/seajs/seajs/2.2.0/sea.js"></script>
+<script src="../sea-modules/jquery/jquery/1.10.1/jquery.js"></script>
+<script>
+    seajs.config({
+        base: "../sea-modules/",
+        alias: {
+            "jquery": "jquery/jquery/1.10.1/jquery.js"
+        }
+    });
+    seajs.use("../static/test_velocity/app.js")
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+</head>
+<body>
+    <button id="test">你好</button>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+           $("#test").on("testTrigger",function(e,data){
+               console.log(e);
+               console.log(data)
+           }) ;
+
+            $("#test").click(function(e){
+               $(this).trigger("testTrigger",[{"a":"1"}]);
+            });
+        });
+    </script>
+</body>
+</html>

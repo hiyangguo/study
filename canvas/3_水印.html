@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>3_水印</title>
+</head>
+<body style="background: black">
+<canvas id="canvas" style="display: block;margin: 0 auto;border: 1px solid #aaaaaa">
+    您的浏览器尚不支持canvas
+</canvas>
+<input type="range" id="scale-range" min="0.5" max="3" step="0.01" value="1.0"
+       style="display: block;margin: 10px auto;width: 800px;"/>
+<canvas id="watermark-canvas" style="display: none;margin: 0 auto;border: 1px solid #aaaaaa">
+    您的浏览器尚不支持canvas
+</canvas>
+<!--script-->
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            img = new Image(),
+            slider = document.getElementById('scale-range'),
+            scale = slider.value;
+
+        var watermarkCanvas = document.getElementById('watermark-canvas'),
+            watermarkContext = watermarkCanvas.getContext('2d');
+
+        canvas.width = 890;
+        canvas.height = 600;
+
+        //context.fillStyle = "red";
+        //context.fillRect(100, 100, 400, 400);
+
+
+        img.src = "img/img-lg.jpg";
+        img.onload = function () {//图片加载完成后的回调
+            //context.drawImage(img, -1, -1, canvas.width, canvas.height); //img,x,y,w,h
+            drawImgByScale(img, canvas, watermarkCanvas, scale);
+
+            slider.onmousemove = function () {
+                scale = this.value;
+                drawImgByScale(img, canvas, watermarkCanvas, scale);
+            }
+        };
+
+        //水印配置
+        watermarkCanvas.width = 500;
+        watermarkCanvas.height = 100;
+
+        watermarkContext.font = "bold 50px Arial";
+        watermarkContext.lineHeight = "1";
+        watermarkContext.fillStyle = "rgba(255 , 255 , 255, 0.5)"
+        watermarkContext.textBaseline = "middle";
+        watermarkContext.fillText("== lovetutu.cn ==", 20, 50);
+    }
+
+    function drawImgByScale(img, canvas, watermarkCanvas, scale) {
+        var imgW = canvas.width * scale,
+            imgH = canvas.height * scale,
+            dx = (canvas.width - imgW) / 2,
+            dy = (canvas.height - imgH) / 2;
+
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+        canvas.getContext('2d').drawImage(img, dx, dy, imgW, imgH);
+
+        canvas.getContext('2d').drawImage(watermarkCanvas, canvas.width - watermarkCanvas.width, canvas.height - watermarkCanvas.height)
+    }
+</script>
+</body>
+</html>

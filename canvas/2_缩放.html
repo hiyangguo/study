@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+    <title>2_缩放</title>
+</head>
+<body style="background: black">
+<canvas id="canvas" style="display: block;margin: 0 auto;border: 1px solid #aaaaaa">
+    您的浏览器尚不支持canvas
+</canvas>
+<input type="range" id="scale-range" min="0.5" max="3" step="0.01" value="1.0"
+       style="display: block;margin: 10px auto;width: 800px;"/>
+
+<!--script-->
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            img = new Image(),
+            slider = document.getElementById('scale-range'),
+            scale = slider.value;
+
+        canvas.width = 890;
+        canvas.height = 600;
+
+        //context.fillStyle = "red";
+        //context.fillRect(100, 100, 400, 400);
+
+
+        img.src = "img/img-lg.jpg";
+        img.onload = function () {//图片加载完成后的回调
+            //context.drawImage(img, -1, -1, canvas.width, canvas.height); //img,x,y,w,h
+            drawImgByScale(img, canvas, scale);
+
+            slider.onmousemove = function(){
+                scale = this.value;
+                drawImgByScale(img, canvas, scale);
+            }
+        };
+    }
+
+    function drawImgByScale(img, canvas, scale) {
+        var imgW = canvas.width * scale,
+            imgH = canvas.height * scale,
+            dx = (canvas.width - imgW) / 2,
+            dy = (canvas.height - imgH) / 2;
+
+        canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
+        canvas.getContext('2d').drawImage(img, dx, dy, imgW, imgH);
+    }
+</script>
+</body>
+</html>
