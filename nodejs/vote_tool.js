@@ -8,7 +8,7 @@ var config = {
     //每分钟投几票
     times: 500,
     //投到多少票
-    count: 2
+    count: 100
 };
 
 //已投多少票
