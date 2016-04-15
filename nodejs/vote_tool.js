@@ -6,7 +6,7 @@ var querystring = require('querystring');
 
 var config = {
     //每分钟投几票
-    times: 60,
+    times: 500,
     //投到多少票
     count: 2
 };
@@ -21,10 +21,10 @@ var post_data = querystring.stringify({
 (function() {
     //定时执行
     var time = setInterval(function() {
-        if (config.count === _count) {
+        start();
+        if (config.count - 1 === _count) {
             clearInterval(time);
         }
-        start();
     }, Math.floor(1000 * 60 / config.times));
 })()
 
