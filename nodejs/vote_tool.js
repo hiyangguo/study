@@ -6,7 +6,7 @@ var querystring = require('querystring');
 
 var config = {
     //每分钟投几票
-    times: 500,
+    times: 600,
     //投到多少票
     count: 100
 };
@@ -26,7 +26,7 @@ var post_data = querystring.stringify({
             clearInterval(time);
         }
     }, Math.floor(1000 * 60 / config.times));
-})()
+})();
 
 
 //伪造ip
