@@ -7,6 +7,7 @@
 /compass/.sass-cache
 nodejs/node_modules
 dist
+/express/node_modules
 .sass-cache
 /_draft
 /famibao

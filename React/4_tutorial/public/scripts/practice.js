@@ -119,3 +119,14 @@ ReactDOM.render(
     <CommentBox url="/api/comments" pollInterval={2000}/>,
     document.getElementById('content')
 );
+
+
+var summary_row = React.createClass({
+    render: function() {
+        return (
+            <div>
+                {this.state.inner}
+            </div>
+        )
+    }
+});
