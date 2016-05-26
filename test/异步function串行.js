@@ -16,6 +16,12 @@ tasks = tasks.map(function(i) {
         }, Math.random() * 500 | 0);
     }
 });
+
+/**
+ * 方法一
+ * @param tasks
+ * @param cb
+ */
 function seq(tasks, cb) {
     var i = 0;
     runTask();
@@ -37,30 +43,19 @@ seq(tasks, function() {
     console.log('all Done');
 });
 
+/**
+ * 方法二
+ * @param tasks
+ * @param cb
+ */
+function seq2(tasks, cb) {
+    tasks.reduceRight(function(cb, task) {
+        return function() {
+            return task(cb);
+        };
+    }, cb)();
+}
 
-// function seq(tasks, cb) {
-//     /* 请实现这个 seq 方法 */
-//
-//     // 下面是样例答案一
-//     tasks.reduceRight((cb, task) => () => task(cb), cb)();
-//
-//     tasks.reduceRight(function(cb, task) {
-//        task(cb);
-//     }, cb);
-//     return;
-//
-//     // 下面是样例答案二
-//     tasks = tasks.slice();
-//     (function next() {
-//         var t = tasks.shift();
-//         if (t) t(next);
-//         else cb();
-//     })();
-// }
-
-// function seq(tasks, cb) {
-//     // 下面是样例答案一
-//     tasks.reduceRight(function(cb, task) {
-//         task(cb);
-//     }, cb);
-// }
+seq2(tasks, function() {
+    console.log('all Done');
+});
