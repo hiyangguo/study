@@ -6,7 +6,7 @@
 
 var print = require('./common').print;
 var str = '';
-(function() {
+{
     print('let和const命令', 'h1');
     print('let命令', 'h2');
     print('基本用法', 'h3');
@@ -23,9 +23,9 @@ var str = '';
         console.log(array[i]);
     }`;
     print(str);
-})();
+}
 
-(function() {
+{
     print('var 和 let 的区别', 'h3');
     str = `
     var a = [];
@@ -43,9 +43,9 @@ var str = '';
     }
     a[7]();`;
     print(str);
-})();
+}
 
-(function() {
+{
     print('不存在变量提升', 'h3');
     str = `
     console.log(foo); // 输出undefined
@@ -54,9 +54,9 @@ var str = '';
     var foo = 2;
     let bar = 2;`;
     print(str);
-})();
+}
 
-(function() {
+{
     print('暂时性死区', 'h3');
     print('只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。', '>')
     str = `
@@ -71,4 +71,4 @@ var str = '';
 ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。
 
 总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称TDZ）。`, 'p');
-})();
+}
