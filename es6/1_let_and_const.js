@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+//上面的内行代码 表示可以直接运行此代码
 /**
  * Created by yangguo on 2016/6/30 0030.
  */
