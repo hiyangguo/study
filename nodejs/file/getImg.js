@@ -12,7 +12,7 @@ var url = "http://static.mukewang.com/static/img/common/logo.png";
 http.get(url, function (res) {
     var imgData = "";
 
-    res.setEncoding("binary"); //一定要设置response的编码为binary否则会下载下来的图片打不开
+    res.setEncoding("binary"); //涓�瀹氳璁剧疆response鐨勭紪鐮佷负binary鍚﹀垯浼氫笅杞戒笅鏉ョ殑鍥剧墖鎵撲笉寮�
     res.on("data", function (chunk) {
         imgData += chunk;
     });
